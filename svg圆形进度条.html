@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>svg技巧-stroke-dasharray</title>
+	<style type="text/css">
+		.contain{
+			width: 200px;
+			height: 200px;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+<div class="contain">
+	<svg viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" style="
+    transform: rotateZ(-90deg);">
+  		<circle cx="50" cy="50" r="45" fill="#290cee" stroke="#ccc" stroke-width="5"></circle>
+  		<circle fill="#ccc" class="cir" cx="50" cy="50" r="45" stroke="red" stroke-width="5" stroke-dasharray="283" style="stroke-dasharray: 200, 400; transition: all 1s ease 0s;"></circle>
+	</svg>
+	<input onchange="change(this)" type="range" step="1" min="0" max="285">
+</div>
+</body>
+<script type="text/javascript">
+//svg 有两个 stroke-dasharray,  stroke-dashoffset
+//分别是  stroke-dasharray控制画笔的虚实，通过实线和虚线的来控制画,值是以,或者空格分割的多个值(或者%)
+//stroke-dashoffset 线条与起始位置偏移，值(或%)，>0 : 左移(逆时针)， <0：右移(顺时针)
+//对形状元素，文本内容元素有效， 圆形起始位置是右侧中心；
+
+let circle = document.querySelector('.cir')
+function change(a){
+	let v = a.value
+	//间隔实线虚线，这里让虚线长度超出圆周长;
+	circle.style.strokeDasharray = v + " 400"
+}
+
+</script>
+</html>
