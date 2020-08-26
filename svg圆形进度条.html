@@ -18,15 +18,26 @@
   		<circle fill="#ccc" class="cir" cx="50" cy="50" r="45" stroke="red" stroke-width="5" stroke-dasharray="283" style="stroke-dasharray: 200, 400; transition: all 1s ease 0s;"></circle>
 	</svg>
 	<input onchange="change(this)" type="range" step="1" min="0" max="285">
+	
+	<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" style="
+	    height: 180px;
+	    transform: rotateZ(-90deg);
+	    position: relative;
+	">
+		<circle cx="9" cy="9" r="8" fill="#fff" stroke="#DEE0E3" stroke-width="2"></circle>
+       		<circle fill="transparent" cx="9" cy="9" r="8" stroke="#3370FF" stroke-width="2" stroke-dasharray="40, 143.9822971502571" style="transition: all 1s ease 0s;" stroke-linecap="round"></circle>
+    	</svg>
+	
 </div>
 </body>
 <script type="text/javascript">
 //svg 有两个 stroke-dasharray,  stroke-dashoffset
 //分别是  stroke-dasharray控制画笔的虚实，通过实线和虚线的来控制画,值是以,或者空格分割的多个值(或者%)
 //stroke-dashoffset 线条与起始位置偏移，值(或%)，>0 : 左移(逆时针)， <0：右移(顺时针)
-//对形状元素，文本内容元素有效， 圆形起始位置是右侧中心；
+// 对形状元素，文本内容元素有效， 圆形起始位置是右侧中心；
 // 更新： 2020.5.2
 // 圆角也可以做！!  stroke-linecap 可以设置描边末端的样式，stroke-linecap="round"即可.
+// 一般可以只使用stroke-dasharray来做进度条，在svg上样式处理使得起始位置移到上面，两个circle元素构建进度条内外层，注意下面的circle可以fill透明，这样就可以保证下方circle完全可见。
 
 let circle = document.querySelector('.cir')
 function change(a){
